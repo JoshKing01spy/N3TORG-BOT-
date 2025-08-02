@@ -1,4 +1,4 @@
-name: BOYKA-MK-X-MR-MIDKING
+name: SUBZERO-MD-X-MR-FRANK
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Run Bot (loop & auto-restart if crash)
         run: |
-          echo "Running BOYKA-MK in auto-restart mode..."
+          echo "Running SUBZERO-MD in auto-restart mode..."
           timeout 18000 bash -c 'while true; do npm start || echo "Bot crashed, restarting..."; sleep 2; done'
 
       - name: Re-Trigger Workflow
@@ -29,7 +29,7 @@ jobs:
         run: |
           echo "Re-running workflow..."
           curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.BOYKA }}" \
+            -H "Authorization: Bearer ${{ secrets.SUBZERO }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/BOYKA-MK.yml/dispatches \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/SUBZERO.yml/dispatches \
             -d '{"ref":"main"}'
